@@ -1,0 +1,31 @@
+{
+  "name": "lists-of-tweets",
+  "description": "",
+  "version": "0.0.0",
+  "author": "Pierre Bertet <bonjour@pierrebertet.net> (http://pierrebertet.net/)",
+  "license": "MIT",
+  "repository": {},
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "make test"
+  },
+  "dependencies": {
+    "bluebird": "^1.2.4",
+    "compression": "^1.0.2",
+    "express": "^4.1.2",
+    "httpinvoke": "^1.0.4",
+    "minihash": "0.0.2",
+    "mtwitter": "^1.5.3",
+    "underscore": "^1.6.0"
+  },
+  "devDependencies": {
+    "browserify": "^4.1.2",
+    "chai": "^1.9.1",
+    "chai-as-promised": "^4.1.1",
+    "mocha": "^1.18.2",
+    "nock": "^0.30.0",
+    "rimraf": "^2.2.8",
+    "tape": "^2.12.3"
+  }
+}

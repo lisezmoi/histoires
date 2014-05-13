@@ -1,0 +1,7 @@
+cache/*
+!cache/.gitkeep
+test/server/cache/*
+!test/server/cache/.gitkeep
+client/dist
+node_modules/
+config.json

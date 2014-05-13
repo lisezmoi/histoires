@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Tweet Story</title>
+  <style>
+  body, textarea {
+    font: 18px/28px "Helvetica Neue",Helvetica,Arial,sans-serif;
+  }
+  body {
+    margin: 60px 20px;
+  }
+  .tweets {
+    width: 500px;
+    min-height: 400px;
+    margin: 0 auto;
+  }
+  body.edit .tweets {
+    float: right;
+  }
+  .tweets > * {
+    margin: 0 auto 40px;
+  }
+  textarea {
+    float: left;
+    display: none;
+    width: 45%;
+    min-height: 400px;
+    margin-top: 11px;
+    padding: 20px;
+    border: 1px solid #55ACEE;
+    border-radius: 5px;
+    resize: none;
+  }
+  body.edit textarea {
+    display: block;
+  }
+  #edit {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+  }
+  </style>
+</head>
+<body>
+<button type="button" id="edit">Edit</button>
+<div class="tweets"></div>
+<textarea autofocus></textarea>
+<script src="https://platform.twitter.com/widgets.js"></script>
+<script src="dist/app.js"></script>
+</body>
+</html>
