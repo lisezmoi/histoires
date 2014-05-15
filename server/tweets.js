@@ -8,6 +8,8 @@ module.exports = function tweets(settings) {
     throw new Error('consumer_key and consumer_secret must be provided');
   }
 
+  settings.skipQueue = true;
+
   var twitter = new Twitter(settings);
   var cacheDir = settings.cacheDir || null;
 

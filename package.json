@@ -16,7 +16,7 @@
     "express": "^4.1.2",
     "httpinvoke": "^1.0.4",
     "minihash": "0.0.2",
-    "mtwitter": "^1.5.3",
+    "mtwitter": "git://github.com/bpierre/mtwitter.git#skip-queue",
     "underscore": "^1.6.0"
   },
   "devDependencies": {
