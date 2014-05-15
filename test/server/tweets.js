@@ -16,7 +16,7 @@ function clearCache() {
   fs.mkdirSync(CACHE_DIR);
 }
 
-describe('Tweets', function(){
+describe('server/tweets', function(){
   var tweet1 = '1735237290';
   var tweet2 = '464259582358220800';
   var tweet1Html = require('./fixtures/' + tweet1 + '.json').html;

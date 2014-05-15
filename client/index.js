@@ -1,9 +1,8 @@
 var minihash = require('minihash');
 var httpinvoke = require('httpinvoke');
 var _ = require('underscore');
+var twitterUrl = require('../lib/twitter-url');
 
-var URL_REG = /twitter\.com\/([^\/]+)\/status\/([^\/]+)/;
-var URL_TPL = 'https://twitter.com/{0}/status/{1}';
 var OEMBED_URL = '/tweet/';
 
 var updateWidgets = _.debounce(function() {
@@ -22,19 +21,6 @@ function item(id, container) {
   return request;
 }
 
-function urlToId(url) {
-  var parts = url.match(URL_REG);
-  if (!parts || !parts[0]) return null;
-  return parts[1] + ':' + parts[2];
-}
-
-function idToUrl(id) {
-  var parts = id.split(':');
-  return URL_TPL
-    .replace(/\{0\}/, parts[0])
-    .replace(/\{1\}/, parts[1]);
-}
-
 function reset(container, requests) {
   requests.forEach(function(abort) {
     abort();
@@ -42,8 +28,8 @@ function reset(container, requests) {
   container.innerHTML = '';
 }
 
-function filterEmptyIds(ids) {
-  return ids.filter(function(value) {
+function noEmpty(values) {
+  return values.filter(function(value) {
     return value && value.trim();
   });
 }
@@ -62,20 +48,20 @@ function init(textarea, edit, container) {
 
   var hash = minihash('!/', function(value) {
     reset(container, requests);
-    var ids = filterEmptyIds(value.split(','));
+    var ids = noEmpty(value.split(','));
     ids.forEach(function(id) {
       var parts = id.split(':');
       if (parts.length !== 2) return;
       requests.push(item(parts[1], container));
     });
-    textarea.value = ids.map(idToUrl).join('\n') + '\n';
+    textarea.value = ids.map(twitterUrl.idToUrl).join('\n') + '\n';
   });
 
   textarea.addEventListener('keypress', function() {
     setTimeout(function() {
-      var ids = textarea.value.split('\n').map(urlToId);
+      var ids = textarea.value.split('\n').map(twitterUrl.urlToId);
       waitForHash = false;
-      hash.value = filterEmptyIds(ids).join(',');
+      hash.value = noEmpty(ids).join(',');
     }, 0);
   }, false);
 
